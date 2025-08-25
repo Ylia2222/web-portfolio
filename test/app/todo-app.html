@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>To Do App</title>
@@ -10,15 +11,15 @@
 
         body {
             margin: 0;
-            background-color: #add;
+            background-color: #d2f8c7;
         }
 
         nav {
-            background-color: #ffb3b3;
+            background-color: #ffbae5;
             width: 100%;
             padding: 20px;
             text-align: center;
-            border-bottom: solid #adadad;
+            border-bottom: solid #e6e6e6;
         }
 
         #text {
@@ -45,10 +46,10 @@
 
         .task {
             width: 100%;
-            background-color: antiquewhite;
+            background-color: #fafae0;
             margin-top: 20px;
             padding: 20px;
-            border-bottom: solid #adadad;
+            border-bottom: solid #e6e6e6;
         }
 
         .task-text {
@@ -63,7 +64,7 @@
         <nav>
             <input type="text">
             <button id="add-btn" onclick="Add()">Добавить</button>
-            <button id="clear-btn" onclick="Load()">Очистить сделанное</button>
+            <button id="clear-btn" onclick="ClearDone()">Очистить сделанное</button>
         </nav>
         <div id="task-list">
             <div class="task">
@@ -74,85 +75,80 @@
     </main>
 
     <script>
-        /* function testVar() {
-            if (true) {
-                var x = 10
+        let taskArrayText
+        let taskArray
+
+        function TextToArray() {
+            taskArrayText = localStorage.getItem("taskArray")
+            taskArrayText = taskArrayText === null ? "" : taskArrayText
+            taskArray = []
+
+            let element = ""
+            let j = 0
+            while (j < taskArrayText.length) {
+                if (taskArrayText[j] === ",") {
+                    console.log(element)
+                    taskArray.push(element)
+                    element = ""
+                } else if (j === taskArrayText.length - 1) {
+                    element += taskArrayText[j]
+                    console.log(element)
+                    taskArray.push(element)
+                } else {
+                    element += taskArrayText[j]
+                }
+                j++
             }
-            console.log("testVar:", x)
         }
-
-        function testLet() {
-            if (true) {
-                let x = 10
-                console.log("testLet IF:", x)
-            }
-            console.log("testLet:", x)
-        }
-
-        testVar()
-        testLet()*/
-
-        let index = localStorage.getItem("index")
-        index = index === null ? 0 : index
 
         function Add() {
             let inputBox = document.querySelector("nav input")
 
-            let prefab =
-                `<div class="task">
-                <input type="checkbox">
-                <div class="task-text"> ${inputBox.value}</div>
-            </div>`
+            taskArray.push(inputBox.value)
 
-            let taskList = document.querySelector("#task-list")
-            taskList.innerHTML += prefab
-
-            localStorage.setItem("task" + index, inputBox.value)
-
-            index++
-
-            localStorage.setItem("index", index)
+            localStorage.setItem("taskArray", taskArray)
 
             inputBox.value = ""
+            Load()
+        }
+
+        function ClearDone() {
+            TextToArray()
+
+            console.log(taskArray)
+
+            taskArray.pop()
+
+            let checkbox = document.querySelector(".task input")
+            console.log(checkbox.checked)
+            
+            localStorage.setItem("taskArray", taskArray)
+
+            Load()
         }
 
         function Load() {
+            TextToArray()
+
             let i = 0
-            while (i < 3) {
-                let taskText = localStorage.getItem("task" + i)
+            let taskList = document.querySelector("#task-list")
+            taskList.innerHTML = ""
+
+            while (i < taskArray.length) {
+                let taskText = taskArray[i]
+
                 let prefab =
                     `<div class="task">
                 <input type="checkbox">
                 <div class="task-text"> ${taskText}</div>
             </div>`
 
-                let taskList = document.querySelector("#task-list")
                 taskList.innerHTML += prefab
                 i++
             }
         }
+
+        TextToArray()
         Load()
     </script>
 </body></html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
