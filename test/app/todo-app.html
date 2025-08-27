@@ -3,23 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do App</title>
     <style>
         * {
             box-sizing: border-box;
         }
 
+        :root {
+            --p-color: #ffbaba;
+            --s-color: #d2f8c7;
+            --btn-color-1: #6dff8e;
+            --btn-color-2: #ffc049;
+            --acc-color-1: #eaeaea;
+        }
+
         body {
             margin: 0;
-            background-color: #d2f8c7;
+            background-color: var(--s-color);
+            background: linear-gradient(#d2f8c7, #ffbaba);
+            font-family: monospace;
+            min-height: 100vh;
         }
 
         nav {
-            background-color: #ffbae5;
+            background-color: var(--p-color);
             width: 100%;
             padding: 20px;
             text-align: center;
-            border-bottom: solid #e6e6e6;
+            border-bottom: solid var(--acc-color-1);
         }
 
         #text {
@@ -34,26 +46,58 @@
             height: 30px;
         }
 
+        #buttons {
+            display: flex;
+        }
+
         #add-btn {
-            width: 49.7%;
             height: 30px;
+            background-color: var(--btn-color-1);
+            flex-flow: 1;
+            min-height: 30px;
         }
 
         #clear-btn {
-            width: 49.7%;
             height: 30px;
+            background-color: var(--btn-color-2);
+            flex-flow: 1;
+            min-height: 30px;
         }
 
         .task {
             width: 100%;
-            background-color: #fafae0;
+            background-color: var(--p-color);
             margin-top: 20px;
             padding: 20px;
-            border-bottom: solid #e6e6e6;
+            border-bottom: solid var(--acc-color-1);
+            margin: auto;
+            max-width: 900px;
         }
 
         .task-text {
             display: inline-block;
+            word-wrap: break-word;
+        }
+
+        @media (max-width: 600px) {
+            #buttons {
+                flex-direction: column;
+            }
+
+            nav input {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav input {
+                width: 50%;
+                display: inline-block;
+            }
+            #buttons {
+                display: inline-block;
+            }
         }
     </style>
 </head>
@@ -63,8 +107,10 @@
 
         <nav>
             <input type="text">
-            <button id="add-btn" onclick="Add()">Добавить</button>
-            <button id="clear-btn" onclick="ClearDone()">Очистить сделанное</button>
+            <div id="buttons">
+                <button id="add-btn" onclick="Add()">Добавить</button>
+                <button id="clear-btn" onclick="ClearDone()">Очистить сделанное</button>
+            </div>
         </nav>
         <div id="task-list">
             <div class="task">
@@ -117,14 +163,40 @@
 
             console.log(taskArray)
 
-            taskArray.pop()
+            //taskArray.pop()
 
-            let checkbox = document.querySelector(".task input")
-            console.log(checkbox.checked)
-            
+            let tasks = document.querySelectorAll(".task")
+
+            let i = 0
+            while (i < tasks.length) {
+                let checkbox = tasks[i].querySelector("input")
+                let text = tasks[i].querySelector(".task-text").textContent
+                let taskArrayCopy = taskArray.slice(0, taskArray.length)
+
+                console.log(text, checkbox.checked)
+
+                if (checkbox.checked) {
+                    let j = 0
+                    while (j < taskArray.length) {
+                        console.log("Условие:", text, taskArray[j], text === taskArray[j], text.length, taskArray[j].length)
+
+                        if (text === taskArray[j]) {
+                            console.log("1:", taskArray, text)
+                            taskArrayCopy.splice(j, j)
+                            console.log("2:", taskArray, text)
+                        }
+                        j++
+                    }
+                    taskArray = taskArrayCopy.slice(0, taskArrayCopy.length)
+                }
+
+                i++
+            }
+
             localStorage.setItem("taskArray", taskArray)
 
             Load()
+
         }
 
         function Load() {
@@ -140,7 +212,7 @@
                 let prefab =
                     `<div class="task">
                 <input type="checkbox">
-                <div class="task-text"> ${taskText}</div>
+                <div class="task-text">${taskText}</div>
             </div>`
 
                 taskList.innerHTML += prefab
