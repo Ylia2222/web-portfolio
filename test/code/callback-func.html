@@ -2,41 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CALL-Func</title>
+    <title>Callback Functions</title>
 </head>
-
 <body>
-    <button onclick="Attack()">Атака</button>
-    <button onclick="Heal()">Лечение</button>
-
-    <br><br><br>
-
-    <button onclick="Action(cAttack)">Атака</button>
-    <button onclick="Action(cHeal)">Лечение</button>
-
+   
+   <button onclick="Attack()">Атака</button>
+   <button onclick="Heal()">Лечение</button>
+   
+   <br><br><br>
+   
+   <button onclick="Action(cAttack)">Атака</button>
+   <button onclick="Action(cHeal)">Лечение</button>
+    
     <script>
-        function Attack() {
+        function Attack(){
             let num1 = prompt("Введите число для атаки 💥:")
-            alert("💥 Вы атаковали на:" + num1)
+            alert("💥 Вы атаковали на: " + num1)
         }
-
-        function Heal() {
-            let num2 = prompt("Введите число для лечения 💌:")
-            alert("💌 Вы вылечились на:" + num2)
+        
+        function Heal(){
+            let num2 = prompt("Введите число для лечения 💖:")
+            alert("💖 Вы вылечились на: " + num2)
         }
-
-        function Action(someAction) {
+        
+        function Action(someAction){
             let num = prompt("Введите число для действия:")
-
+            
             someAction(num)
         }
-
-        function cAttack(val) {
-            alert("💥 Вы атаковали на:" + val)
+        
+        function cAttack(val){
+            
+            alert("💥 Вы атаковали на: " + val)
         }
-
-        function cHeal(val) {
-            alert("💌 Вы вылечились на:" + val)
+        
+        function cHeal(val){
+            
+            alert("💖 Вы вылечились на: " + val)
         }
     </script>
-</body></html>
+</body>
+</html>

@@ -8,19 +8,19 @@
         .product {
             display: flex;
             min-height: 300px;
-            background: #655a5a;
+            background: #789b66;
             margin-bottom: 20px;
         }
 
         .product img {
-            height: 100%;
             width: 100%;
+            height: 100%;
         }
 
         .product #img-frame {
+            background: green;
             padding: 20px;
             width: 50%;
-            background: #987777;
         }
 
         .product #info {
@@ -29,11 +29,10 @@
         }
 
         .product #info div {
-            background: #987777;
+            background: beige;
             margin-bottom: 10px;
             padding: 5px;
         }
-
     </style>
 </head>
 
@@ -43,11 +42,12 @@
         <input type="text" placeholder="ссылка картинки" id="url">
         <input type="text" placeholder="цена" id="price">
         <input type="text" placeholder="цвет" id="color">
-        <button onclick="AddProduct()">Добавить продукт</button>
+        <button onclick="AddProduct()">Добавить Продукт</button>
     </nav>
+
     <div class="product">
         <div id="img-frame">
-            <img src="https://1gai.ru/uploads/posts/2018-08/1535576194_wqf.jpg" alt="">
+            <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png" alt="">
         </div>
         <div id="info">
             <div id="name">Имя</div>
@@ -58,99 +58,103 @@
             <div id="price">Цена</div>
             <div id="desc">Описание</div>
         </div>
+
     </div>
+
+
 
     <script>
         class Product {
-            constructor(name, url, price, color) {
+            constructor(name, url, price, color){
                 this.name = name;
                 this.url = url;
                 this.price = price;
                 this.color = color;
             }
         }
-
-        function AddProduct() {
+        
+        function AddProduct(){
             let name = document.querySelector("nav #name").value
             let url = document.querySelector("nav #url").value
             let price = document.querySelector("nav #price").value
             let color = document.querySelector("nav #color").value
-
+            
             let product = new Product(
                 name,
                 url,
                 price,
                 color
             )
+            
             console.log(product)
         }
-
-        let newProduct = new Product("Жигули",
-            "https://wroom.ru/i/news/10760img2.jpg",
-            "100 000 руб.",
-            "Белый")
-
+        
+        let newProduct = new Product(
+            "Футболка Nike",
+            "https://modano.ru/wa-data/public/shop/products/08/15/1508/images/203949/203949.635x953@2x.jpg",
+            1200,
+            "черный"
+        )
+        
         console.log(newProduct["name"], newProduct)
-
-
-
-        /*let product = ["https://sun9-24.userapi.com/s/v1/if1/o_YM3cvRkF_U_B6gw7wMv4y1w1P6tR_75eq1Jfl-KVHb6ybyHPhJ8Rg-_frQHL6THV8STg.jpg?quality=96&as=32x23,48x34,72x51,108x77,160x113,240x170,360x255,480x340,540x383,604x428&from=bu",
-            "Mers E500",
-            "W124",
-            "Седан",
-            "Black",
-            "Карбон",
-            "от 520 000руб",
-            "В 90е годы это была САМАЯ крутая тачка для блатных, которую они только могли вообразить! Это ж круче Мерса шестисотого было! Да и в те-то годы такая производительность седана (285 км/ч!) казалось немыслимой! Вообще, так-то не хилый аппарат! Это, наверно, был самый крутой седан 90х."
+        
+        
+        
+        /*let product = [
+            "https://ir.ozone.ru/s3/multimedia-1-r/wc1000/7917151059.jpg",
+            "Куртка DARKLIS",
+            "куртка",
+            "M",
+            "красная",
+            "полиэстер",
+            "5180",
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam magnam sequi ducimus corporis commodi, dignissimos nam. Molestias nam atque unde officiis tempore sequi voluptatibus. Voluptates!"
         ]
 
         document.body.innerHTML +=
+            `<div class="product">
+                <div id="img-frame">
+                    <img src="${product[0]}" alt="">
+                </div>
+                <div id="info">
+                    <div id="name">${product[1]}</div>
+                    <div id="price">${product[6]}</div>
+                    <div id="type">${product[2]}</div>
+                    <div id="size">${product[3]}</div>
+                    <div id="color">${product[4]}</div>
+                    <div id="material">${product[5]}</div>
+                    <div id="desc">${product[7]}</div>
+                </div>
+            </div>
             `
-                <div class="product">
-        <div id="img-frame">
-            <img src="${product[0]}" alt="">
-        </div>
-        <div id="info">
-            <div id="name">${product[1]}</div>
-            <div id="type">${product[2]}</div>
-            <div id="size">${product[3]}</div>
-            <div id="color">${product[4]}</div>
-            <div id="material">${product[5]}</div>
-            <div id="price">${product[6]}</div>
-            <div id="desc">${product[7]}</div>
-        </div>
-    </div> 
-            `
+        
         let product2 = {
-            name: "Мерседес",
-            price: "2 000 000",
-            size: "Седан",
-            color: "black",
-            desc: "Описание!",
-            material: "Сталь",
-            url: "https://balthazar.club/o/uploads/posts/2024-01/1705044726_balthazar-club-p-krasivii-mersedes-banan-vkontakte-25.png"
+            name: "Футболка Nike",
+            price: 1200,
+            size: "L",
+            type: "футболка",
+            color: "черный",
+            desc: "Описание!!!",
+            material: "полиэстер",
+            url: "https://modano.ru/wa-data/public/shop/products/08/15/1508/images/203949/203949.635x953@2x.jpg"
         }
-
+        
         document.body.innerHTML +=
+            `<div class="product">
+                <div id="img-frame">
+                    <img src="${product2["url"]}" alt="">
+                </div>
+                <div id="info">
+                    <div id="name">${product2["name"]}</div>
+                    <div id="price">${product[6]}</div>
+                    <div id="type">${product[2]}</div>
+                    <div id="size">${product[3]}</div>
+                    <div id="color">${product[4]}</div>
+                    <div id="material">${product[5]}</div>
+                    <div id="desc">${product[7]}</div>
+                </div>
+            </div>
             `
-                <div class="product">
-        <div id="img-frame">
-            <img src="${product2["url"]}" alt="">
-        </div>
-        <div id="info">
-            <div id="name">${product[1]}</div>
-            <div id="type">${product[6]}</div>
-            <div id="size">${product[2]}</div>
-            <div id="color">${product[3]}</div>
-            <div id="material">${product[4]}</div>
-            <div id="price">${product[5]}</div>
-            <div id="desc">${product[7]}</div>
-        </div>
-    </div> 
-            `
-        */
-
+            */
     </script>
-</body>
-
-</html>
+</body></html>

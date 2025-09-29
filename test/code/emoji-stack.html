@@ -7,24 +7,20 @@
         :root {
             --slots: 15;
         }
-
         * {
             margin: 0;
             padding: 0;
         }
-
         body {
             height: 100vh;
             display: flex;
             flex-direction: row;
         }
-
         #game {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
-
         #tower {
             background: linear-gradient(180deg, #cceaff, #a6c5ff);
             display: flex;
@@ -38,7 +34,6 @@
             line-height: calc(100vh / var(--slots));
             overflow: hidden;
         }
-
         #tower div {
             display: flex;
             align-items: center;
@@ -47,11 +42,9 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             transition: transform 0.15s ease;
         }
-
         #tower div:hover {
             transform: scale(1.1);
         }
-
         #timeout {
             font-size: 64px;
             font-weight: 700;
@@ -64,7 +57,6 @@
             background: rgba(255, 0, 0, 0.05);
             border-radius: 8px;
         }
-
         #ui {
             width: 200px;
             display: flex;
@@ -73,7 +65,6 @@
             justify-content: flex-start;
             padding: 10px;
         }
-
         #wins {
             text-align: center;
             font-size: 32px;
@@ -82,7 +73,6 @@
             margin-bottom: 10px;
             color: #004d99;
         }
-
         #timer {
             text-align: center;
             font-size: 32px;
@@ -93,18 +83,17 @@
         }
     </style>
 </head>
-
 <body>
-    <div id="ui">
-        <div id="wins">Wins: 0</div>
-        <div id="timer">Time: 0s</div>
-    </div>
-
+   <div id="ui">
+       <div id="wins">Wins: 0</div>
+       <div id="timer">Time: 0s</div>
+   </div>
+    
     <div id="game">
         <div id="tower" onclick="AddEmoji()"></div>
         <div id="timeout">Time Out!</div>
     </div>
-
+    
     <script>
         /*
             План:
@@ -118,42 +107,43 @@
                 - Кнопка "Старт"
             4. Улучшить CSS (+)
         */
-
-        setInterval(fun, 1000)
-
-        function fun() {
+        
+        setInterval(fun,1000)
+        
+        function fun(){
             console.log("interval!")
         }
-
-        let emojis = ['🔷', '🟨', '🟢', '💣', '🕒']
+        
+        let emojis = ['🔷','🟨','🟢','💣','🕒']
         let tower = []
-
+        
         let wins = 0
         let startTime = Date.now()
         let currentTime = Date.now()
-        let gameTime = 100
+        let gameTime = 120
         let timer = gameTime
-
+        
         let slots = 15
-        document.documentElement.style.setProperty("--slots", slots)
-
-
+        document.documentElement.style.setProperty("--slots",slots)
+        
+        
         console.log(Math.random())
-
-        function AddEmoji() {
+        
+        function AddEmoji(){
             //document.body.innerHTML += emojis[Math.round(Math.random() * 2)]
-            if (tower[tower.length - 1] === "💣") {
+            if(tower[tower.length - 1] === "💣") {
                 let i = 0
-                while (i < tower.length) {
+                while(i < tower.length){
                     tower[i] = "💥"
                     i++
                 }
-            } else if (tower[tower.length - 1] === "💥") {
+            } else if(tower[tower.length - 1] === "💥"){
                 tower = []
-            } else if (tower[tower.length - 1] === "🕒") {
+            } else if(tower[tower.length - 1] === "🕒"){
                 gameTime += 10
                 tower[tower.length - 1] = emojis[Math.round(Math.random() * (emojis.length - 1))]
-            } else if (tower.length === slots) {
+            }
+            else if(tower.length === slots){
                 CheckWin()
             } else {
                 tower.push(emojis[Math.round(Math.random() * (emojis.length - 1))])
@@ -161,28 +151,30 @@
             }
             Show()
         }
-
-        function DeleteEmoji(event) {
+        
+        function DeleteEmoji(event){
             tower.pop()
             Show()
             console.log("del")
             event.stopPropagation()
         }
-
-        function Show() {
+        
+        function Show(){
             let i = tower.length - 1
             document.querySelector("#tower").innerHTML = ""
-
-            while (i >= 0) {
+            
+            while (i >= 0){
                 document.querySelector("#tower").innerHTML +=
                     `<div onclick="DeleteEmoji(event)">${tower[i]}</div>`
                 i--
             }
+            
+            
         }
-
+        
         setInterval(Clock, 1000)
         
-        function Clock() {
+        function Clock(){
             currentTime = Date.now()
             if (timer > 0)
                 timer = gameTime - (currentTime - startTime) / 1000
@@ -193,19 +185,19 @@
             console.log(timer)
             document.querySelector("#timer").textContent = `Time: ${Math.ceil(timer)}s`
         }
-
-        function CheckWin() {
-            let i = 0
-            let chosenEmoji = tower[0]
-            while (i < tower.length) {
-                if (tower[i] === chosenEmoji) {
-                    console.log(tower[i])
-                } else {
-                    console.log("NO WIN!")
-                    return
-                }
-                i++
-            }
+        
+        function CheckWin(){
+               let i = 0
+               let chosenEmoji = tower[0]
+               while (i < tower.length){
+                   if(tower[i] === chosenEmoji){
+                        console.log(tower[i])
+                   } else {
+                       console.log("NO WIN!")
+                       return
+                   }
+                   i++
+               }
             console.log("WINNER!")
             wins++
             console.log(wins)
@@ -213,4 +205,5 @@
             tower = []
         }
     </script>
-</body></html>
+</body>
+</html>

@@ -11,32 +11,32 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #d1d1d1;
+            background: gray;
         }
 
         .picture {
             position: relative;
             width: 60vw;
             height: 40vw;
-            background-color: #94eaff;
+            background-color: #74dfff;
             overflow: hidden;
             animation-name: SkyAnim;
-            animation-duration: 15s;
+            animation-duration: 6s;
             animation-iteration-count: infinite;
         }
         
-        @keyframes SkyAnim{
+        @keyframes SkyAnim {
             15%{
-                background-color: #94eaff;
+                background-color: #74dfff;
             }
-            40%{
-                background-color: #3232c1;
+            40% {
+                background-color: #212f4a;
             }
-            75%{
-                background-color: #3232c1;
+            75% {
+                background-color: #212f4a;
             }
             100%{
-                background-color: #94eaff;
+                background-color: #74dfff;
             }
         }
 
@@ -46,7 +46,7 @@
             left: 0;
             width: 100%;
             height: 35%;
-            background-color: #ffe7b0;
+            background-color: #f2e267;
             z-index: 1;
         }
 
@@ -56,51 +56,50 @@
             left: 35%;
             width: 20vw;
             height: 20vw;
-            background-color: #ffe7b0;
+            background-color: #fdef82;
             transform: rotate(45deg);
-
         }
 
         .sun {
             width: 5vw;
             height: 5vw;
-            background-color: #fffb9e;
+            background-color: yellow;
             border-radius: 100%;
-            margin-left: 5vw;
+            margin-left: 6vw;
         }
-
+        
         .moon {
             width: 5vw;
             height: 5vw;
-            background-color: #99d1d1;
+            background-color: white;
             border-radius: 100%;
-            margin-right: 5vw;
+            margin-right: 6vw;
         }
-
+        
         .sun-moon-box {
             width: 100%;
             position: absolute;
-            top: 45%;
+            top: 60%;
             left: 0;
             display: flex;
             justify-content: space-between;
             animation-name: SunMoonAnim;
-            animation-duration: 17s;
+            animation-duration: 6s;
             animation-iteration-count: infinite;
             animation-timing-function: linear;
             transform: rotateZ(90deg)
         }
-
-        @keyframes SunMoonAnim {
-            100% {
-                transform: rotate(450deg)
+        
+        @keyframes SunMoonAnim{
+            100%{
+                transform: rotateZ(450deg)
             }
         }
 
         .cloud1 {
             width: 15vw;
             height: 3.5vw;
-            background-color: aliceblue;
+            background-color: white;
             position: absolute;
             top: 15%;
             left: 0;
@@ -109,7 +108,7 @@
         .cloud2 {
             width: 15vw;
             height: 3.5vw;
-            background-color: aliceblue;
+            background-color: white;
             position: absolute;
             top: 20%;
             left: 15%;
@@ -118,16 +117,16 @@
         .cloud3 {
             width: 15vw;
             height: 3.5vw;
-            background-color: aliceblue;
+            background-color: white;
             position: absolute;
-            top: 22%;
+            top: 25%;
             right: 0;
         }
 
         .cloud4 {
             width: 15vw;
             height: 3.5vw;
-            background-color: aliceblue;
+            background-color: white;
             position: absolute;
             top: 30%;
             right: 15%;
@@ -139,7 +138,7 @@
             height: 100%;
             transform: translateX(0%);
             animation-name: CloudsAnim;
-            animation-duration: 14s;
+            animation-duration: 12s;
             animation-iteration-count: infinite;
             animation-timing-function: linear;
         }
@@ -151,11 +150,12 @@
         }
 
         .clouds2 {
+            position: absolute;
             width: 100%;
             height: 100%;
             transform: translateX(-100%);
             animation-name: CloudsAnim2;
-            animation-duration: 14s;
+            animation-duration: 12s;
             animation-iteration-count: infinite;
             animation-timing-function: linear;
         }
@@ -165,6 +165,8 @@
                 transform: translateX(0%)
             }
         }
+        
+
 
     </style>
 </head>
