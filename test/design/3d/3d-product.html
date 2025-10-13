@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            height: 400px;
+            /perspective: 500px;
+        }
+
+        #left {
+            background: #ffbef7;
+            flex: 1;
+            perspective: 500px;
+        }
+
+        #right {
+            background: #a2008f;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 500px;
+            /transform-style: preserve-3d;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 22px;
+            border: solid 2px;
+            border-color: #69005c;
+            border-style: ridge;
+            transform: rotateY(-10deg) rotateX(5deg);
+            animation-name: ImgIdle;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes ImgIdle {
+            0% {
+                transform: rotateY(-5deg) rotateX(10deg)
+            }
+
+            50% {
+                transform: rotateY(5deg) rotateX(10deg)
+            }
+
+            100% {
+                transform: rotateY(-5deg) rotateX(10deg)
+            }
+        }
+
+        #title {
+            font-size: 35px;
+            font-family: sans-serif;
+            font-weight: 600;
+            background: #ff9cd5;
+            transform: rotateY(15deg) translateY(40px) translateX(40px);
+        }
+
+        #subtitle {
+            font-size: 35px;
+            font-weight: 200;
+            background: #ff9cd5;
+            transform: rotateY(-15deg) translateY(65px) translateX(-40px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="left">
+        <div id="title">Подарите заботу и красоту</div>
+        <div id="subtitle">Эксклюзивные продукты из натуральных ингредиентов</div>
+    </div>
+    <div id="right">
+        <img src="/test/design/img/1.jpg" alt="">
+    </div>
+</body></html>
