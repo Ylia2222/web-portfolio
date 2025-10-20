@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background:
+                radial-gradient(15% 15% at 250px 150px, #8e0000, transparent),
+                0 200px linear-gradient(0deg, #ff9f9f, #ffe7b2, #ff9f9f);
+        }
+
+    </style>
+</head>
+
+<body onmousemove="GetMouseXY(event)">
+    <script>
+        let posY = 0
+
+        function GetMouseXY(e) {
+            console.log(e.clientX, e.clientY)
+            document.body.style.background = `
+radial-gradient(15% 15% at ${e.clientX}px ${e.clientY}px, #8e0000, transparent),
+0 ${posY}px linear-gradient(0deg, #ff9f9f, #ffe7b2, #ff9f9f)`
+
+            posY++
+        }
+
+        //setInterval(Slide, 10)
+
+    </script>
+</body>
+
+</html>
