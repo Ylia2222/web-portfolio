@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <title>Document</title>
+    <style>
+        html {
+            font-size: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--color-bg)
+        }
+
+        .main-header {
+            background: var(--color-surface);
+            display: flex;
+        }
+
+        .main-header-icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            overflow: hidden;
+            margin: 1%;
+        }
+
+        .main-header-icon img {
+            background: var(--color-accent);
+            width: 100%;
+        }
+
+        .main-nav {
+            flex-grow: 1;
+            display: flex;
+            gap: 16px;
+            margin-bottom: 1%;
+            margin-top: 1%;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            background: transparent;
+            flex: 1;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-nav a:hover {
+            background: var(--color-secondary);
+        }
+
+        .main-header-h1 {
+            font-size: 2.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="main-header-icon">
+            <img src="assets/test-icon.jpg" alt="">
+        </div>
+        <nav class="main-nav">
+            <a href="#">Главная</a>
+            <a href="#">Дизайн</a>
+            <a href="#">Код</a>
+        </nav>
+        <h1 class="main-header-h1">WEBSITE</h1>
+    </header>
+</body></html>
