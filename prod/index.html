@@ -5,127 +5,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/header.css">
     <title>Document</title>
     <style>
-        html {
-            font-size: 16px;
+        .hero {
+            background: green;
+            height: 600px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background: var(--color-bg)
-        }
-
-        .main-header {
-            background: var(--color-surface);
+        .hero-fg {
+            background: red;
+            height: 100%;
             display: flex;
-            animation: HeaderAnim 1s;
         }
 
-        .main-header-icon {
-            margin: 1%;
-            width: clamp(1rem, 5vw, 3rem);
-            height: clamp(1rem, 5vw, 3rem);
+        .hero-left {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 100%;
-            overflow: hidden;
+            flex-direction: column;
+            width: 45%;
         }
 
-        .main-header-icon img {
-            background: var(--color-accent);
+        .hero-fg-text {
+            background: #1400ff;
+            height: 85%;
             width: 100%;
+            padding: var(--space-s);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .main-nav {
+        .hero-fg-h2 {
+            font-size: 3rem;
+        }
+
+        .hero-fg-p {
+            font-size: 1.5rem;
+        }
+
+        .hero-fg-btns {
+            background: green;
+            width: 100%;
+            height: 15%;
+            display: flex;
+            flex-direction: row;
+            padding: 1rem;
+            gap: 1rem;
             flex-grow: 1;
-            display: flex;
-            gap: 16px;
-            margin-bottom: 1%;
-            margin-top: 1%;
-            background: var(--color-secondary);
         }
 
-        .main-nav a {
+        .hero-fg-pbtn {
+            color: black;
+            background: white;
+            padding: var(--space-m);
+            text-align: center;
             text-decoration: none;
-            background: transparent;
-            flex: 1;
-            font-size: 2rem;
+            font-size: 1.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            border-radius: 50%;
+        }
+
+        .hero-fg-sbtn {
+            color: black;
+            background: none;
+            border: solid black 0.25rem;
+            padding: var(--space-m);
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.25rem;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .main-nav a:hover {
-            background: var(--color-secondary);
-        }
-
-        .main-header-h1 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        .hero-fg-img {
+            background: #ff00c4;
+            width: 35%;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 1%;
+            gap: 1rem;
         }
 
-        .main-nav-dropdown {
-            display: none;
+        .hero-img-1 {
+            background: #00fff5;
+            width: 60%;
+            height: 80%;
+            border-radius: 4rem;
         }
 
-        .main-nav-dropdown:hover+.main-nav {
-            display: block;
-            position: absolute;
-        }
-
-        .main-nav-box {
+        .hero-fg-info {
+            background: #ebff00;
+            width: 20%;
             position: relative;
-            flex: 1;
-            display: flex;
-            justify-content: center;
         }
 
-        @keyframes HeaderAnim {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
+        .hero-icon-1 {
+            background: black;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            position: absolute;
+            top: 25%;
+            right: 20%;
         }
 
-        @media(max-width: 480px) {
-            .main-nav {
-                display: none;
-                top: 100%;
-            }
-
-            .main-nav-dropdown {
-                display: block;
-                font-size: 3rem;
-                color: var(--color-text);
-                flex: 1;
-                text-align: center;
-                /background: pink;
-            }
-
-            .main-nav-dropdown:active+.main-nav {
-                display: block;
-                position: absolute;
-            }
-
-            .main-nav-box:Focus-within .main-nav {
-                display: block;
-                position: absolute;
-            }
+        .hero-icon-2 {
+            background: #888888;
+            width: 100px;
+            height: 100px;
+            border-radius: 100%;
+            position: absolute;
+            top: 60%;
+            left: 20%;
         }
 
+        .test {
+            background: #e84461;
+            height: 300px;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 
@@ -147,9 +151,28 @@
     <main>
         <section class="hero">
             <div class="hero-bg"></div>
-            <div class="hero-fg"></div>
+            <div class="hero-fg">
+                <div class="hero-left">
+                    <div class="hero-fg-text">
+                        <h2 class="hero-fg-h2">Lorem ipsum dolor sit amet.</h2>
+                        <p class="hero-fg-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In odit sed nam, aperiam atque quos!</p>
+                    </div>
+                    <div class="hero-fg-btns">
+                        <a class="hero-fg-pbtn" href="#test">Главная</a>
+                        <a class="hero-fg-sbtn" href="#">Дополнительная</a>
+                    </div>
+                </div>
+                <div class="hero-fg-img">
+                    <div class="hero-img-1"></div>
+                </div>
+                <div class="hero-fg-info">
+                    <div class="hero-icon-1"></div>
+                    <div class="hero-icon-2"></div>
+                </div>
+            </div>
         </section>
+        <section class="test"></section>
+        <section class="test"></section>
+        <section class="test" id="test"></section>
     </main>
-</body>
-
-</html>
+</body></html>
